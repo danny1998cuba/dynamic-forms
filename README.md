@@ -1,13 +1,13 @@
-# dynamic-forms
+# d98c_dynamic-forms
 
 > React Dynamic Form with Formik
 
-[![NPM](https://img.shields.io/npm/v/dynamic-forms.svg)](https://www.npmjs.com/package/dynamic-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/dynamic-forms.svg)](https://www.npmjs.com/package/d98c_dynamic-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save dynamic-forms
+npm install --save d98c_dynamic-forms
 ```
 
 ## Usage
@@ -15,12 +15,14 @@ npm install --save dynamic-forms
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'dynamic-forms'
-import 'dynamic-forms/dist/index.css'
+import MyComponent from 'd98c_dynamic-forms'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <DynamicForm
+      formInputs={formInputs}
+      onSubmit={(values) => console.log(values)}
+    />
   }
 }
 ```
@@ -30,7 +32,7 @@ class Example extends Component {
 You should provide an object array with the data for the input fields, following the next schema.
 
 ```js
-const inputs = [
+const formInputs = [
  {
     name: string,
     value: string | number | boolean,
