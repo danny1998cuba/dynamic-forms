@@ -15,7 +15,7 @@ npm install --save d98c_dynamic-forms
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'd98c_dynamic-forms'
+import DynamicForm from 'd98c_dynamic-forms'
 
 class Example extends Component {
   render() {
