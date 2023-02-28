@@ -61,7 +61,7 @@ const formInputs = [
 
 ### Validations
 
-List of valid validators by <code>typeValue</code>. In case that the <code>typeValue</code> attribute is not set, it'll be managed as an string.
+List of valid validators by <code>typeValue</code>. In case that the <code>typeValue</code> attribute is not set, it'll be managed as a string.
 
 <table>
   <thead>
