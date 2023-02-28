@@ -7,7 +7,7 @@ export const CustomHeader = (props) => {
 
   return (
     <h3 style={localStyle} className={`section-header ${props.classes}`}>
-      {props.placeholder}
+      {props.text}
     </h3>
   )
 }

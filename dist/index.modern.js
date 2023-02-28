@@ -33,7 +33,7 @@ const CustomHeader = props => {
   return /*#__PURE__*/React.createElement("h3", {
     style: localStyle,
     className: `section-header ${props.classes}`
-  }, props.placeholder);
+  }, props.text);
 };
 
 const CustomRadioGroup = ({
@@ -251,16 +251,21 @@ const getInputs = inputs => {
 
 const DynamicForm = ({
   formInputs,
-  onSubmit: _onSubmit = values => console.log(values)
+  onSubmit: _onSubmit = values => console.log(values),
+  resetOnSubmit: _resetOnSubmit = true
 }) => {
+  let inputs = formInputs.filter(input => input.type != 'header' && input.type != 'submit' && input.type != 'reset');
   const {
     initialValues,
     validationSchema
-  } = getInputs(formInputs);
+  } = getInputs(inputs);
   return /*#__PURE__*/React.createElement(Formik, {
     initialValues: initialValues,
     validationSchema: validationSchema,
-    onSubmit: _onSubmit
+    onSubmit: (values, helpers) => {
+      _onSubmit(values);
+      if (_resetOnSubmit) helpers.resetForm();
+    }
   }, () => /*#__PURE__*/React.createElement(Form, {
     noValidate: true
   }, formInputs.map(({
@@ -270,6 +275,12 @@ const DynamicForm = ({
     ...props
   }) => {
     switch (type) {
+      case 'header':
+        return /*#__PURE__*/React.createElement(CustomHeader, {
+          text: props.text,
+          key: `header_${props.text.replace(' ', '_').toString().toLowerCase()}`,
+          classes: props.class
+        });
       case 'select':
         return /*#__PURE__*/React.createElement(CustomSelect, {
           key: name,
@@ -294,12 +305,6 @@ const DynamicForm = ({
           label: props === null || props === void 0 ? void 0 : props.label,
           key: name,
           name: name,
-          classes: props.class
-        });
-      case 'header':
-        return /*#__PURE__*/React.createElement(CustomHeader, {
-          placeholder: props.placeholder,
-          key: `header_${name}`,
           classes: props.class
         });
       default:

@@ -14,13 +14,23 @@ import { getInputs } from './utils'
 
 export const DynamicForm = ({
   formInputs,
-  onSubmit = (values) => console.log(values)
+  onSubmit = (values) => console.log(values),
+  resetOnSubmit = true
 }) => {
-  const { initialValues, validationSchema } = getInputs(formInputs)
+  let inputs = formInputs.filter(input =>
+    input.type != 'header'
+    && input.type != 'submit'
+    && input.type != 'reset'
+  )
+
+  const { initialValues, validationSchema } = getInputs(inputs)
 
   return <Formik initialValues={initialValues}
     validationSchema={validationSchema}
-    onSubmit={onSubmit}
+    onSubmit={(values, helpers) => {
+      onSubmit(values);
+      if (resetOnSubmit) helpers.resetForm();
+    }}
   >
     {
       () => (
@@ -28,6 +38,14 @@ export const DynamicForm = ({
           {
             formInputs.map(({ name, type, value, ...props }) => {
               switch (type) {
+                // Headers
+                case 'header':
+                  return <CustomHeader
+                    text={props.text}
+                    key={`header_${props.text.replace(' ', '_').toString().toLowerCase()}`}
+                    classes={props.class} />
+
+                // Inputs
                 case 'select':
                   return <CustomSelect
                     key={name}
@@ -36,6 +54,7 @@ export const DynamicForm = ({
                     options={props?.options}
                     classes={props.class}
                     inline={props?.inline} />
+
                 case 'radio-group':
                   return <CustomRadioGroup
                     label={props?.label}
@@ -45,17 +64,14 @@ export const DynamicForm = ({
                     classes={props.class}
                     inline={props?.inline}
                     inlineopts={props?.inlineOpts} />
+
                 case 'checkbox':
                   return <CustomCheckBox
                     label={props?.label}
                     key={name}
                     name={name}
                     classes={props.class} />
-                case 'header':
-                  return <CustomHeader
-                    placeholder={props.placeholder}
-                    key={`header_${name}`}
-                    classes={props.class} />
+
                 default:
                   return <CustomTextInput
                     key={name}

@@ -94,7 +94,7 @@ var CustomHeader = function CustomHeader(props) {
   return /*#__PURE__*/React.createElement("h3", {
     style: localStyle,
     className: "section-header " + props.classes
-  }, props.placeholder);
+  }, props.text);
 };
 
 var _excluded = ["label", "options"];
@@ -323,16 +323,24 @@ var _excluded$2 = ["name", "type", "value"];
 var DynamicForm = function DynamicForm(_ref) {
   var formInputs = _ref.formInputs,
     _ref$onSubmit = _ref.onSubmit,
-    onSubmit = _ref$onSubmit === void 0 ? function (values) {
+    _onSubmit = _ref$onSubmit === void 0 ? function (values) {
       return console.log(values);
-    } : _ref$onSubmit;
-  var _getInputs = getInputs(formInputs),
+    } : _ref$onSubmit,
+    _ref$resetOnSubmit = _ref.resetOnSubmit,
+    resetOnSubmit = _ref$resetOnSubmit === void 0 ? true : _ref$resetOnSubmit;
+  var inputs = formInputs.filter(function (input) {
+    return input.type != 'header' && input.type != 'submit' && input.type != 'reset';
+  });
+  var _getInputs = getInputs(inputs),
     initialValues = _getInputs.initialValues,
     validationSchema = _getInputs.validationSchema;
   return /*#__PURE__*/React.createElement(formik.Formik, {
     initialValues: initialValues,
     validationSchema: validationSchema,
-    onSubmit: onSubmit
+    onSubmit: function onSubmit(values, helpers) {
+      _onSubmit(values);
+      if (resetOnSubmit) helpers.resetForm();
+    }
   }, function () {
     return /*#__PURE__*/React.createElement(formik.Form, {
       noValidate: true
@@ -341,6 +349,12 @@ var DynamicForm = function DynamicForm(_ref) {
         type = _ref2.type,
         props = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
       switch (type) {
+        case 'header':
+          return /*#__PURE__*/React.createElement(CustomHeader, {
+            text: props.text,
+            key: "header_" + props.text.replace(' ', '_').toString().toLowerCase(),
+            classes: props["class"]
+          });
         case 'select':
           return /*#__PURE__*/React.createElement(CustomSelect, {
             key: name,
@@ -365,12 +379,6 @@ var DynamicForm = function DynamicForm(_ref) {
             label: props === null || props === void 0 ? void 0 : props.label,
             key: name,
             name: name,
-            classes: props["class"]
-          });
-        case 'header':
-          return /*#__PURE__*/React.createElement(CustomHeader, {
-            placeholder: props.placeholder,
-            key: "header_" + name,
             classes: props["class"]
           });
         default:

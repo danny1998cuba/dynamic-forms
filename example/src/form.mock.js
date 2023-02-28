@@ -1,8 +1,7 @@
 export const formInputs = [
     {
         type: "header",
-        name: "personal",
-        placeholder: "Personal Information"
+        text: "Personal Information"
     },
     {
         type: "text",
@@ -55,8 +54,7 @@ export const formInputs = [
     },
     {
         type: "header",
-        name: "account",
-        placeholder: "Account Details"
+        text: "Account Details"
     },
     {
         type: "email",

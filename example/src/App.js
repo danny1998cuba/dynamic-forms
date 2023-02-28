@@ -8,6 +8,7 @@ const App = () => {
   return <DynamicForm
     formInputs={formInputs}
     onSubmit={(values) => console.log(values)}
+    resetOnSubmit={true}
   />
 }
 
