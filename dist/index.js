@@ -150,7 +150,7 @@ var booleanValidations = function booleanValidations(validations) {
       case 'isFalse':
         schema = schema.isFalse(rule.message);
         break;
-      default:
+      case 'required':
         schema = schema.required(rule.message);
         break;
     }
@@ -183,7 +183,7 @@ var numberValidations = function numberValidations(validations) {
       case 'integer':
         schema = schema.integer(rule.message);
         break;
-      default:
+      case 'required':
         schema = schema.required(rule.message);
         break;
     }
@@ -201,7 +201,7 @@ var dateValidations = function dateValidations(validations) {
       case 'max':
         schema = schema.max(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
         break;
-      default:
+      case 'required':
         schema = schema.required(rule.message);
         break;
     }
@@ -243,7 +243,7 @@ var stringValidations = function stringValidations(validations) {
           message: rule.message
         });
         break;
-      default:
+      case 'required':
         schema = schema.required(rule.message);
         break;
     }

@@ -11,7 +11,7 @@ export const booleanValidations = (validations) => {
             case 'isFalse':
                 schema = schema.isFalse(rule.message)
                 break;
-            default:
+            case 'required':
                 schema = schema.required(rule.message)
                 break;
         }
@@ -46,7 +46,7 @@ export const numberValidations = (validations) => {
             case 'integer':
                 schema = schema.integer(rule.message)
                 break;
-            default:
+            case 'required':
                 schema = schema.required(rule.message)
                 break;
         }
@@ -66,7 +66,7 @@ export const dateValidations = (validations) => {
             case 'max':
                 schema = schema.max(rule?.value, rule.message)
                 break;
-            default:
+            case 'required':
                 schema = schema.required(rule.message)
                 break;
         }
@@ -107,7 +107,7 @@ export const stringValidations = (validations) => {
             case 'regex':
                 schema = schema.matches(rule?.value, { excludeEmptyString: true, message: rule.message })
                 break;
-            default:
+            case 'required':
                 schema = schema.required(rule.message)
                 break;
         }

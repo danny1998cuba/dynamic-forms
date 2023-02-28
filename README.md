@@ -51,7 +51,7 @@ const formInputs = [
     validations: [
       {
         type: 'required'
-        value?: string | number | boolean | /^{your regex}+$/,
+        value?: string
         message: string
       }
     ]
@@ -60,6 +60,9 @@ const formInputs = [
 ```
 
 ### Validations
+
+List of valid validators by <code>typeValue</code>. In case that the <code>typeValue</code> attribute is not set, it'll be managed as an string.
+
 <table>
   <thead>
     <tr>
@@ -75,6 +78,13 @@ const formInputs = [
   </thead>
 
   <tbody>
+    <tr>
+      <td>*</td>
+      <td>required</td>
+      <td>null</td>
+      <td></td>
+      <td>The value is required</td>
+    </tr>
     <tr>
       <td rowspan="9">string</td>
       <td>isEmail</td>
@@ -201,6 +211,9 @@ const formInputs = [
     </tr>
     </tbody>
   </table>
+
+  
+If a wrong rule type is set, the whole rule would be ignored.
 
 
 ## License
