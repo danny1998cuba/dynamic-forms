@@ -53,7 +53,7 @@ export const formInputs = [
 
     },
     {
-        type: "password2",
+        type: "password",
         name: "password2",
         placeholder: "Repit Password",
         value: "",

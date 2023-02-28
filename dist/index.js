@@ -139,18 +139,94 @@ var CustomTextInput = function CustomTextInput(props) {
   }));
 };
 
-var generateValidations = function generateValidations(field) {
-  console.log('>>', field.name);
-  var schema = field.typeValue === 'boolean' ? Yup.boolean() : Yup.string();
-  for (var _iterator = _createForOfIteratorHelperLoose(field.validations), _step; !(_step = _iterator()).done;) {
+var booleanValidations = function booleanValidations(validations) {
+  var schema = Yup.boolean().strict();
+  for (var _iterator = _createForOfIteratorHelperLoose(validations), _step; !(_step = _iterator()).done;) {
     var rule = _step.value;
-    console.log(rule.type);
     switch (rule.type) {
       case 'isTrue':
         schema = schema.isTrue(rule.message);
         break;
+      case 'isFalse':
+        schema = schema.isFalse(rule.message);
+        break;
+      default:
+        schema = schema.required(rule.message);
+        break;
+    }
+  }
+  return schema;
+};
+var numberValidations = function numberValidations(validations) {
+  var schema = Yup.number().strict();
+  for (var _iterator2 = _createForOfIteratorHelperLoose(validations), _step2; !(_step2 = _iterator2()).done;) {
+    var rule = _step2.value;
+    switch (rule.type) {
+      case 'min':
+        schema = schema.min(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+        break;
+      case 'max':
+        schema = schema.max(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+        break;
+      case 'lessThan':
+        schema = schema.lessThan(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+        break;
+      case 'moreThan':
+        schema = schema.moreThan(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+        break;
+      case 'positive':
+        schema = schema.positive(rule.message);
+        break;
+      case 'negative':
+        schema = schema.negative(rule.message);
+        break;
+      case 'integer':
+        schema = schema.integer(rule.message);
+        break;
+      default:
+        schema = schema.required(rule.message);
+        break;
+    }
+  }
+  return schema;
+};
+var dateValidations = function dateValidations(validations) {
+  var schema = Yup.date().strict();
+  for (var _iterator3 = _createForOfIteratorHelperLoose(validations), _step3; !(_step3 = _iterator3()).done;) {
+    var rule = _step3.value;
+    switch (rule.type) {
+      case 'min':
+        schema = schema.min(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+        break;
+      case 'max':
+        schema = schema.max(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+        break;
+      default:
+        schema = schema.required(rule.message);
+        break;
+    }
+  }
+  return schema;
+};
+var stringValidations = function stringValidations(validations) {
+  var schema = Yup.string().strict();
+  for (var _iterator4 = _createForOfIteratorHelperLoose(validations), _step4; !(_step4 = _iterator4()).done;) {
+    var rule = _step4.value;
+    switch (rule.type) {
       case 'isEmail':
         schema = schema.email(rule.message);
+        break;
+      case 'isUrl':
+        schema = schema.url(rule.message);
+        break;
+      case 'isUuid':
+        schema = schema.uuid(rule.message);
+        break;
+      case 'lowercase':
+        schema = schema.lowercase(rule.message);
+        break;
+      case 'uppercase':
+        schema = schema.uppercase(rule.message);
         break;
       case 'minLength':
         schema = schema.min(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
@@ -158,28 +234,41 @@ var generateValidations = function generateValidations(field) {
       case 'maxLength':
         schema = schema.max(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
         break;
-      case 'regex':
-        schema = schema.matches(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
+      case 'length':
+        schema = schema.length(rule === null || rule === void 0 ? void 0 : rule.value, rule.message);
         break;
-      case 'match':
-        schema = schema.oneOf(rule === null || rule === void 0 ? void 0 : rule.value.map(function (el) {
-          return Yup.ref(el);
-        }), rule.message);
+      case 'regex':
+        schema = schema.matches(rule === null || rule === void 0 ? void 0 : rule.value, {
+          excludeEmptyString: true,
+          message: rule.message
+        });
         break;
       default:
-        schema = schema.required();
+        schema = schema.required(rule.message);
         break;
     }
-    console.log(schema);
   }
-  console.log(field.name, schema);
   return schema;
+};
+
+var generateValidations = function generateValidations(field) {
+  var schema;
+  switch (field.typeValue) {
+    case 'boolean':
+      return schema = booleanValidations(field.validations);
+    case 'number':
+      return schema = numberValidations(field.validations);
+    case 'date':
+      return schema = dateValidations(field.validations);
+    default:
+      return schema = stringValidations(field.validations);
+  }
 };
 var getInputs = function getInputs(inputs) {
   var initialValues = {};
   var validationsFields = {};
-  for (var _iterator2 = _createForOfIteratorHelperLoose(inputs), _step2; !(_step2 = _iterator2()).done;) {
-    var field = _step2.value;
+  for (var _iterator = _createForOfIteratorHelperLoose(inputs), _step; !(_step = _iterator()).done;) {
+    var field = _step.value;
     initialValues[field.name] = field.value;
     if (!field.validations) continue;
     var schema = generateValidations(field);
@@ -201,7 +290,6 @@ var DynamicForm = function DynamicForm(_ref) {
   var _getInputs = getInputs(formInputs),
     initialValues = _getInputs.initialValues,
     validationSchema = _getInputs.validationSchema;
-  console.log(validationSchema);
   return /*#__PURE__*/React.createElement(formik.Formik, {
     initialValues: initialValues,
     validationSchema: validationSchema,

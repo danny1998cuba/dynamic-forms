@@ -17,8 +17,6 @@ export const DynamicForm = ({
 }) => {
   const { initialValues, validationSchema } = getInputs(formInputs)
 
-  console.log(validationSchema);
-
   return <Formik initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={onSubmit}

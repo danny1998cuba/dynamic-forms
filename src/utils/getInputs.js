@@ -1,42 +1,19 @@
 import * as Yup from 'yup'
+import * as Validations from './validations'
 
 const generateValidations = (field) => {
-    console.log('>>', field.name);
-    let schema = field.typeValue === 'boolean' ? Yup.boolean() : Yup.string()
+    let schema
 
-    for (const rule of field.validations) {
-        console.log(rule.type);
-        switch (rule.type) {
-            case 'isTrue':
-                schema = schema.isTrue(rule.message)
-                break;
-            case 'isEmail':
-                schema = schema.email(rule.message)
-                break;
-            case 'minLength':
-                schema = schema.min(rule?.value, rule.message)
-                break;
-            case 'maxLength':
-                schema = schema.max(rule?.value, rule.message)
-                break;
-            case 'regex':
-                schema = schema.matches(rule?.value, rule.message)
-                break;
-            case 'match':
-                schema = schema.oneOf(
-                    rule?.value.map(el => Yup.ref(el)),
-                    rule.message)
-                break;
-            default:
-                schema = schema.required()
-                break;
-        }
-        console.log(schema);
+    switch (field.typeValue) {
+        case 'boolean':
+            return schema = Validations.booleanValidations(field.validations)
+        case 'number':
+            return schema = Validations.numberValidations(field.validations)
+        case 'date':
+            return schema = Validations.dateValidations(field.validations)
+        default:
+            return schema = Validations.stringValidations(field.validations)
     }
-
-    console.log(field.name, schema);
-
-    return schema
 }
 
 // section: Form

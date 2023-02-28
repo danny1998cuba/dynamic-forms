@@ -1,4 +1,7 @@
 /node_modules
 /example/node_modules
+/example/build
 
 yarn-error.log
+TODO's.txt
+table.html
