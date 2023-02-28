@@ -36,10 +36,12 @@ const formInputs = [
  {
     name: string,
     value: string | number | boolean,
+    
     placeholder?: string,
     label?: string,
+    inline?: 'true' | 'false',
 
-    type: 'text' | 'radio-group' | 'email' | 'password' | 'select' | 'checkbox',
+    type: 'text' | 'radio-group' | 'email' | 'password' | 'select' | 'checkbox' | 'header',
     typeValue?: 'string' /* default */ | 'boolean' | 'number' | '',
     options?: [
       {

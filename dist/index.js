@@ -62,18 +62,39 @@ function _createForOfIteratorHelperLoose(o, allowArrayLike) {
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
+var styles = {"error":"_styles-module__error__3fyPz","inline":"_styles-module__inline__3F-ST","options":"_styles-module__options__1p3r7","inlineOpt":"_styles-module__inlineOpt__339hQ","columnOpt":"_styles-module__columnOpt__PfI8c","opt":"_styles-module__opt__3K3m9"};
+
 var CustomCheckBox = function CustomCheckBox(props) {
   var _useField = formik.useField(props),
     field = _useField[0];
   return /*#__PURE__*/React.createElement("label", {
     className: "label_check " + props.classes
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles.inline
   }, /*#__PURE__*/React.createElement("input", _extends({
     type: "checkbox"
-  }, field, props)), /*#__PURE__*/React.createElement("span", null, props.label), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
+  }, field, props, {
+    id: props.name
+  })), /*#__PURE__*/React.createElement("label", {
+    htmlFor: props.name,
+    style: {
+      marginLeft: '10px'
+    }
+  }, props.label)), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
   }));
+};
+
+var CustomHeader = function CustomHeader(props) {
+  var localStyle = {
+    marginBottom: 0
+  };
+  return /*#__PURE__*/React.createElement("h3", {
+    style: localStyle,
+    className: "section-header " + props.classes
+  }, props.placeholder);
 };
 
 var _excluded = ["label", "options"];
@@ -85,15 +106,23 @@ var CustomRadioGroup = function CustomRadioGroup(_ref) {
     field = _useField[0];
   return /*#__PURE__*/React.createElement("div", {
     className: "radio-group " + props.classes
-  }, /*#__PURE__*/React.createElement("b", null, label), options.map(function (opt) {
-    return /*#__PURE__*/React.createElement("label", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: props.inline && props.inline === 'true' ? styles.inline : ''
+  }, /*#__PURE__*/React.createElement("label", null, label), /*#__PURE__*/React.createElement("div", {
+    className: styles.options + " " + (props.inlineopts === 'true' ? styles.inlineOpt : styles.columnOpt)
+  }, options.map(function (opt, index) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "" + styles.opt,
       key: opt.value
     }, /*#__PURE__*/React.createElement("input", _extends({}, field, props, {
       type: "radio",
       value: opt.value,
-      checked: opt.value === field.value
-    })), opt.desc);
-  }), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
+      checked: opt.value === field.value,
+      id: "opt_" + opt.value + "_" + index
+    })), /*#__PURE__*/React.createElement("label", {
+      htmlFor: "opt_" + opt.value + "_" + index
+    }, opt.desc));
+  }))), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -109,18 +138,22 @@ var CustomSelect = function CustomSelect(_ref) {
     field = _useField[0];
   return /*#__PURE__*/React.createElement("div", {
     className: "select " + props.classes
+  }, /*#__PURE__*/React.createElement("div", {
+    className: props.inline && props.inline === 'true' ? styles.inline : ''
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: props.name || props.id
-  }, " ", label, " "), /*#__PURE__*/React.createElement("select", _extends({}, field, props), /*#__PURE__*/React.createElement("option", {
+  }, " ", label, " "), /*#__PURE__*/React.createElement("select", _extends({}, field, props, {
+    id: props.name
+  }), /*#__PURE__*/React.createElement("option", {
     value: ""
-  }, "--- Select ---"), options.map(function (_ref2) {
+  }, "--- Select an option ---"), options.map(function (_ref2, index) {
     var desc = _ref2.desc,
       value = _ref2.value;
     return /*#__PURE__*/React.createElement("option", {
       value: value,
-      key: value
+      key: "select_option_" + index
     }, desc);
-  })), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
+  }))), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -132,10 +165,16 @@ var CustomTextInput = function CustomTextInput(props) {
     field = _useField[0];
   return /*#__PURE__*/React.createElement("div", {
     className: "input-box " + props.classes
-  }, /*#__PURE__*/React.createElement("input", _extends({}, field, props)), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: props.inline && props.inline === 'true' ? styles.inline : ''
+  }, props.label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: props.name
+  }, props.label), /*#__PURE__*/React.createElement("input", _extends({}, field, props, {
+    id: props.name
+  }))), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
-    className: "error"
+    className: "error " + styles.error
   }));
 };
 
@@ -308,7 +347,8 @@ var DynamicForm = function DynamicForm(_ref) {
             label: props === null || props === void 0 ? void 0 : props.label,
             name: name,
             options: props === null || props === void 0 ? void 0 : props.options,
-            classes: props["class"]
+            classes: props["class"],
+            inline: props === null || props === void 0 ? void 0 : props.inline
           });
         case 'radio-group':
           return /*#__PURE__*/React.createElement(CustomRadioGroup, {
@@ -316,7 +356,9 @@ var DynamicForm = function DynamicForm(_ref) {
             name: name,
             options: props === null || props === void 0 ? void 0 : props.options,
             key: name,
-            classes: props["class"]
+            classes: props["class"],
+            inline: props === null || props === void 0 ? void 0 : props.inline,
+            inlineopts: props === null || props === void 0 ? void 0 : props.inlineOpts
           });
         case 'checkbox':
           return /*#__PURE__*/React.createElement(CustomCheckBox, {
@@ -325,11 +367,19 @@ var DynamicForm = function DynamicForm(_ref) {
             name: name,
             classes: props["class"]
           });
+        case 'header':
+          return /*#__PURE__*/React.createElement(CustomHeader, {
+            placeholder: props.placeholder,
+            key: "header_" + name,
+            classes: props["class"]
+          });
         default:
           return /*#__PURE__*/React.createElement(CustomTextInput, {
             key: name,
             name: name,
-            placeholder: props.placeholder,
+            placeholder: props === null || props === void 0 ? void 0 : props.placeholder,
+            inline: props === null || props === void 0 ? void 0 : props.inline,
+            label: props === null || props === void 0 ? void 0 : props.label,
             type: type,
             classes: props["class"]
           });

@@ -2,17 +2,38 @@ import React from 'react';
 import { useField, ErrorMessage, Formik, Form } from 'formik';
 import { boolean, number, date, string, object } from 'yup';
 
+var styles = {"error":"_styles-module__error__3fyPz","inline":"_styles-module__inline__3F-ST","options":"_styles-module__options__1p3r7","inlineOpt":"_styles-module__inlineOpt__339hQ","columnOpt":"_styles-module__columnOpt__PfI8c","opt":"_styles-module__opt__3K3m9"};
+
 const CustomCheckBox = props => {
   const [field] = useField(props);
   return /*#__PURE__*/React.createElement("label", {
     className: `label_check ${props.classes}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles.inline
   }, /*#__PURE__*/React.createElement("input", Object.assign({
     type: "checkbox"
-  }, field, props)), /*#__PURE__*/React.createElement("span", null, props.label), /*#__PURE__*/React.createElement(ErrorMessage, {
+  }, field, props, {
+    id: props.name
+  })), /*#__PURE__*/React.createElement("label", {
+    htmlFor: props.name,
+    style: {
+      marginLeft: '10px'
+    }
+  }, props.label)), /*#__PURE__*/React.createElement(ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
   }));
+};
+
+const CustomHeader = props => {
+  let localStyle = {
+    marginBottom: 0
+  };
+  return /*#__PURE__*/React.createElement("h3", {
+    style: localStyle,
+    className: `section-header ${props.classes}`
+  }, props.placeholder);
 };
 
 const CustomRadioGroup = ({
@@ -23,13 +44,21 @@ const CustomRadioGroup = ({
   const [field] = useField(props);
   return /*#__PURE__*/React.createElement("div", {
     className: `radio-group ${props.classes}`
-  }, /*#__PURE__*/React.createElement("b", null, label), options.map(opt => /*#__PURE__*/React.createElement("label", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: props.inline && props.inline === 'true' ? styles.inline : ''
+  }, /*#__PURE__*/React.createElement("label", null, label), /*#__PURE__*/React.createElement("div", {
+    className: `${styles.options} ${props.inlineopts === 'true' ? styles.inlineOpt : styles.columnOpt}`
+  }, options.map((opt, index) => /*#__PURE__*/React.createElement("div", {
+    className: `${styles.opt}`,
     key: opt.value
   }, /*#__PURE__*/React.createElement("input", Object.assign({}, field, props, {
     type: "radio",
     value: opt.value,
-    checked: opt.value === field.value
-  })), opt.desc)), /*#__PURE__*/React.createElement(ErrorMessage, {
+    checked: opt.value === field.value,
+    id: `opt_${opt.value}_${index}`
+  })), /*#__PURE__*/React.createElement("label", {
+    htmlFor: `opt_${opt.value}_${index}`
+  }, opt.desc))))), /*#__PURE__*/React.createElement(ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -44,17 +73,21 @@ const CustomSelect = ({
   const [field] = useField(props);
   return /*#__PURE__*/React.createElement("div", {
     className: `select ${props.classes}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: props.inline && props.inline === 'true' ? styles.inline : ''
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: props.name || props.id
-  }, " ", label, " "), /*#__PURE__*/React.createElement("select", Object.assign({}, field, props), /*#__PURE__*/React.createElement("option", {
+  }, " ", label, " "), /*#__PURE__*/React.createElement("select", Object.assign({}, field, props, {
+    id: props.name
+  }), /*#__PURE__*/React.createElement("option", {
     value: ""
-  }, "--- Select ---"), options.map(({
+  }, "--- Select an option ---"), options.map(({
     desc,
     value
-  }) => /*#__PURE__*/React.createElement("option", {
+  }, index) => /*#__PURE__*/React.createElement("option", {
     value: value,
-    key: value
-  }, desc))), /*#__PURE__*/React.createElement(ErrorMessage, {
+    key: `select_option_${index}`
+  }, desc)))), /*#__PURE__*/React.createElement(ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -65,10 +98,16 @@ const CustomTextInput = props => {
   const [field] = useField(props);
   return /*#__PURE__*/React.createElement("div", {
     className: `input-box ${props.classes}`
-  }, /*#__PURE__*/React.createElement("input", Object.assign({}, field, props)), /*#__PURE__*/React.createElement(ErrorMessage, {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: props.inline && props.inline === 'true' ? styles.inline : ''
+  }, props.label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: props.name
+  }, props.label), /*#__PURE__*/React.createElement("input", Object.assign({}, field, props, {
+    id: props.name
+  }))), /*#__PURE__*/React.createElement(ErrorMessage, {
     name: props.name,
     component: "span",
-    className: "error"
+    className: `error ${styles.error}`
   }));
 };
 
@@ -237,7 +276,8 @@ const DynamicForm = ({
           label: props === null || props === void 0 ? void 0 : props.label,
           name: name,
           options: props === null || props === void 0 ? void 0 : props.options,
-          classes: props.class
+          classes: props.class,
+          inline: props === null || props === void 0 ? void 0 : props.inline
         });
       case 'radio-group':
         return /*#__PURE__*/React.createElement(CustomRadioGroup, {
@@ -245,7 +285,9 @@ const DynamicForm = ({
           name: name,
           options: props === null || props === void 0 ? void 0 : props.options,
           key: name,
-          classes: props.class
+          classes: props.class,
+          inline: props === null || props === void 0 ? void 0 : props.inline,
+          inlineopts: props === null || props === void 0 ? void 0 : props.inlineOpts
         });
       case 'checkbox':
         return /*#__PURE__*/React.createElement(CustomCheckBox, {
@@ -254,11 +296,19 @@ const DynamicForm = ({
           name: name,
           classes: props.class
         });
+      case 'header':
+        return /*#__PURE__*/React.createElement(CustomHeader, {
+          placeholder: props.placeholder,
+          key: `header_${name}`,
+          classes: props.class
+        });
       default:
         return /*#__PURE__*/React.createElement(CustomTextInput, {
           key: name,
           name: name,
-          placeholder: props.placeholder,
+          placeholder: props === null || props === void 0 ? void 0 : props.placeholder,
+          inline: props === null || props === void 0 ? void 0 : props.inline,
+          label: props === null || props === void 0 ? void 0 : props.label,
           type: type,
           classes: props.class
         });

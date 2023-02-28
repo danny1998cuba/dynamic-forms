@@ -1,8 +1,14 @@
 export const formInputs = [
     {
+        type: "header",
+        name: "personal",
+        placeholder: "Personal Information"
+    },
+    {
         type: "text",
         name: "name",
-        placeholder: "Full Name",
+        label: "Full Name",
+        inline: 'true',
         value: "Daniel Gonzalez",
         validations: [
             {
@@ -16,6 +22,41 @@ export const formInputs = [
             },
         ],
 
+    },
+    {
+        type: "radio-group",
+        name: "gender",
+        label: "Gender: ",
+        // inline: 'true',
+        inlineOpts: 'true',
+        value: "",
+        options: [
+            {
+                value: 'man',
+                desc: "Man"
+            },
+            {
+
+                value: "woman",
+                desc: "Woman"
+            },
+            {
+
+                value: "other",
+                desc: "Other"
+            },
+        ],
+        validations: [
+            {
+                type: "required",
+                message: "Gender is required"
+            }
+        ]
+    },
+    {
+        type: "header",
+        name: "account",
+        placeholder: "Account Details"
     },
     {
         type: "email",
@@ -68,7 +109,8 @@ export const formInputs = [
     {
         type: "select",
         name: "rol",
-        label: "Select an option: ",
+        label: "Select a role: ",
+        // inline: 'true',
         value: "",
         options: [
             {
@@ -88,34 +130,6 @@ export const formInputs = [
             {
                 type: "required",
                 message: "Rol is required"
-            }
-        ]
-    },
-    {
-        type: "radio-group",
-        name: "gender",
-        label: "Gender: ",
-        value: "",
-        options: [
-            {
-                value: 'man',
-                desc: "Man"
-            },
-            {
-
-                value: "woman",
-                desc: "Woman"
-            },
-            {
-
-                value: "other",
-                desc: "Other"
-            },
-        ],
-        validations: [
-            {
-                type: "required",
-                message: "Gender is required"
             }
         ]
     },
