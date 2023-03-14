@@ -1,16 +1,20 @@
 import React from 'react'
-// import { FullExample } from './components'
+import { HashRouter as Router } from 'react-router-dom'
+
+import { routes } from './data/constants'
+import { AppRoutes } from './data/routes/main.routes'
+
 import { MainLayout } from './layout/MainLayout'
 import { Component } from './pages/Component'
 
 
 
 const App = () => {
-  return <>
+  return <Router>
     <MainLayout >
-      <Component />
+      <AppRoutes />
     </MainLayout>
-  </>
+  </Router>
 }
 
 export default App

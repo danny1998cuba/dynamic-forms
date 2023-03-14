@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import React from 'react'
 
 export const Footer = () => {
@@ -16,7 +18,7 @@ export const Footer = () => {
                             <li>
                                 <a href="https://linkedin.com/in/danny98cuba" className="text-decoration-none" target="_blank"
                                     rel="noopener noreferrer">
-                                    <i className="fa fab-linkedin"></i>
+                                    {/* <FontAwesomeIcon icon={} /> */}
                                     Linkedin
                                 </a>
                             </li>
