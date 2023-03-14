@@ -62,7 +62,7 @@ function _createForOfIteratorHelperLoose(o, allowArrayLike) {
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var styles = {"error":"_styles-module__error__3fyPz","inline":"_styles-module__inline__3F-ST","options":"_styles-module__options__1p3r7","inlineOpt":"_styles-module__inlineOpt__339hQ","columnOpt":"_styles-module__columnOpt__PfI8c","opt":"_styles-module__opt__3K3m9"};
+var styles = {"error":"_3fyPz","inline":"_3F-ST","options":"_1p3r7","inlineOpt":"_339hQ","columnOpt":"_PfI8c","opt":"_3K3m9"};
 
 var CustomCheckBox = function CustomCheckBox(props) {
   var _useField = formik.useField(props),

@@ -1,15 +1,16 @@
 import React from 'react'
+// import { FullExample } from './components'
+import { MainLayout } from './layout/MainLayout'
+import { Component } from './pages/Component'
 
-import { DynamicForm } from 'dynamic-forms'
-import 'dynamic-forms/dist/index.css'
-import { formInputs } from './form.mock'
+
 
 const App = () => {
-  return <DynamicForm
-    formInputs={formInputs}
-    onSubmit={(values) => console.log(values)}
-    resetOnSubmit={true}
-  />
+  return <>
+    <MainLayout >
+      <Component />
+    </MainLayout>
+  </>
 }
 
 export default App

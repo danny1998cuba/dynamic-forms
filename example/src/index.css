@@ -1,27 +1,74 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins';
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  min-height: 100vh;
-  background-color: #090c15;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #F3E9DC;
+  min-width: 320px;
+  position: relative;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body * {
+  color: #5E3023;
+}
+
+.theme-background-1 {
+  background-color: #C08552;
+  color: black !important;
+}
+
+.theme-background-2 {
+  background-color: #895737;
+  color: #F3E9DC !important;
+}
+
+.theme-background-2:hover {
+  background-color: #DAB49D;
+  color: #333 !important;
+}
+
+main {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+footer {
+  padding: 1rem;
+  z-index: 1023 !important;
+}
+
+p {
+  width: 75%;
+}
+
+section {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.content {
+  z-index: 100;
+}
+
+body::before {
+  position: fixed;
+  content: '';
+  top: -5rem;
+  right: -8rem;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+  z-index: 0;
+  background-image: url('/images/form.png');
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right;
+  transform: skew(15deg, 20deg);
+  z-index: -1;
 }
 
 form {
@@ -32,11 +79,14 @@ form {
   gap: 8px;
   margin: 0;
 
-  background: #eee;
+  background: #DAB49D;
   padding: 30px 20px;
   border-radius: 20px;
   color: #333;
+}
 
+form * {
+  color: #333;
 }
 
 form .input-box,
