@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import React from 'react'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 export const Footer = () => {
     return (
@@ -18,20 +20,20 @@ export const Footer = () => {
                             <li>
                                 <a href="https://linkedin.com/in/danny98cuba" className="text-decoration-none" target="_blank"
                                     rel="noopener noreferrer">
-                                    {/* <FontAwesomeIcon icon={} /> */}
+                                    <FontAwesomeIcon icon={faLinkedin} className='me-2' />
                                     Linkedin
                                 </a>
                             </li>
                             <li>
                                 <a href="https://github.com/danny1998cuba" className="text-decoration-none" target="_blank"
                                     rel="noopener noreferrer">
-                                    <i className="fa fab-github"></i>
+                                    <FontAwesomeIcon icon={faGithub} className='me-2' />
                                     Github
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto://danny.glezcuet98@gmail.com" className="text-decoration-none">
-                                    <i className="fa fas-envelop"></i>
+                                    <FontAwesomeIcon icon={faEnvelope} className='me-2' />
                                     Mail
                                 </a>
                             </li>

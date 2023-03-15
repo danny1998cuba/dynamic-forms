@@ -1,21 +1,23 @@
 import React from 'react'
+import Highlight from 'react-highlight'
 
-export const JsonDirective = () => {
+export const JsonDirective = ({
+    json_string = `{'example': 'example'}`,
+    above_text,
+    below_text
+}) => {
     return (
         <section id="json-directive">
             <h2>Json directive</h2>
 
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas, assumenda blanditiis beatae
-                ipsam
-                atque quis maxime commodi necessitatibus veritatis omnis nobis sapiente cumque. Accusantium,
-                architecto
-                rem rerum ex quas numquam. Nulla distinctio facilis tempore quas impedit eos, repudiandae odit
-                veritatis
-                eum sequi error, nostrum ut exercitationem unde adipisci, molestiae beatae consequuntur
-                dignissimos
-                suscipit cumque inventore dolorem. Ipsum quibusdam accusamus placeat id quisquam odio vitae.
-            </p>
+            {above_text}
+
+            <Highlight className='json w-75'>
+                {json_string}
+            </Highlight>
+
+
+            {below_text}
         </section>
     )
 }

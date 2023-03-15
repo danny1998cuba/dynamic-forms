@@ -5,23 +5,31 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 export const Component = ({
     name = 'Component name',
-    description = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam quas minus ipsam accusamus est corporis',
     prev = null,
     next = null,
+    data
 }) => {
     return (
         <>
-            <h1 class="mb-3">{name}</h1>
+            <h1 className="mb-3">{name}</h1>
 
             <p>
-                {description}
+                {data.description}
             </p>
 
-            <JsonDirective />
+            <JsonDirective
+                json_string={data.json_directive}
+                above_text={data.json_above_text}
+                below_text={data.json_below_text}
+            />
 
-            <GeneratedDom />
+            <GeneratedDom
+                dom={data.dom}
+                above_text={data.dom_above_text}
+                below_text={data.dom_below_text}
+            />
 
-            <div class="d-flex justify-content-end gap-4">
+            <div className="d-flex justify-content-end gap-4">
                 {prev && <Button text={prev.title} route={`/${prev.path}`} id="prev" icon={<FontAwesomeIcon icon={faAngleLeft} />} iconLeft />}
                 {next && <Button text={next.title} route={`/${next.path}`} id="prev" icon={<FontAwesomeIcon icon={faAngleRight} />} iconRight />}
             </div>

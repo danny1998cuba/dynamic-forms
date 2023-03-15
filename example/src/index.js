@@ -1,4 +1,5 @@
 import './index.css'
+import '../node_modules/highlight.js/styles/monokai-sublime.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
