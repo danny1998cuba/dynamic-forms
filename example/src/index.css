@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-body * {
+body *:not(code) {
   color: #5E3023;
 }
 
@@ -79,8 +79,10 @@ form {
   gap: 8px;
   margin: 0;
 
+  width: 50%;
+
   background: #DAB49D;
-  padding: 30px 20px;
+  padding: 30px 40px;
   border-radius: 20px;
   color: #333;
 }
@@ -94,10 +96,28 @@ form .select {
   width: 100%;
 }
 
+form .input-box > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+
+form .input-box label {
+  width: 100%;
+  flex: 1;
+}
+
 form .input-box input:not([type='submit']),
 form .select select {
+  flex: 2;
   padding: 5px;
   width: 100%;
+}
+
+form .section-header {
+  margin-top: 1rem;
 }
 
 .input-reverse {
@@ -109,3 +129,8 @@ form .select select {
   font-size: 10px;
   color: #ff0044;
 }
+
+.hljs {
+  padding: 1rem 0 1rem 2rem !important;
+}
+

@@ -42,7 +42,7 @@ export const AppRoutes = () => {
                                 prev={prev}
                                 next={next}
                                 data={data[id]}
-                            />
+                            >{data[id]?.extra_content}</Component>
                         } />
                     })
             }

@@ -12,7 +12,7 @@ export const JsonDirective = ({
 
             {above_text}
 
-            <Highlight className='json w-75'>
+            <Highlight className='javascript w-75'>
                 {json_string}
             </Highlight>
 
