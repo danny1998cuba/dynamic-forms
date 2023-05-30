@@ -1,0 +1,48 @@
+/* add css module styles here (optional) */
+
+.test {
+  margin: 2em;
+  padding: 0.5em;
+  border: 2px solid #000;
+  font-size: 2em;
+  text-align: center;
+}
+
+.error {
+  color: #ff0044;
+  margin-top: 0;
+}
+
+.inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inline label {
+  width: 100%;
+}
+
+.options {
+  display: flex;
+  margin-left: 1rem;
+}
+
+.options.inlineOpt {
+  flex-direction: row;
+}
+
+.options.columnOpt {
+  flex-direction: column;
+}
+
+.options .opt {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  gap: 3px;
+}
+
+.options .opt:nth-last-child() {
+  margin-right: 0;
+}
