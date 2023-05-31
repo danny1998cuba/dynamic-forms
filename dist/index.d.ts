@@ -1,7 +1,3 @@
-import * as React from 'react';
 import { DynamicForm } from './v1';
-interface Props {
-    text: string;
-}
-export declare const ExampleComponent: ({ text }: Props) => React.JSX.Element;
-export { DynamicForm };
+import { Form, Button, CheckBox, FilePicker, Header, RadioGroup, Select, TextArea, TextField, createButton, createCheckBox, createFilePicker, createForm, createHeader, createRadioGroup, createSelect, createTextArea } from './v2';
+export { DynamicForm, Form, Button, CheckBox, FilePicker, Header, RadioGroup, Select, TextArea, TextField, createButton, createCheckBox, createFilePicker, createForm, createHeader, createRadioGroup, createSelect, createTextArea };

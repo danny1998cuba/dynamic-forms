@@ -1,11 +1,8 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var React = require('react');
-var React__default = _interopDefault(React);
+var React = _interopDefault(require('react'));
 var formik = require('formik');
 var Yup = require('yup');
-
-var styles = {"test":"_styles-module__test__3ybTi","error":"_styles-module__error__3fyPz","inline":"_styles-module__inline__3F-ST","options":"_styles-module__options__1p3r7","inlineOpt":"_styles-module__inlineOpt__339hQ","columnOpt":"_styles-module__columnOpt__PfI8c","opt":"_styles-module__opt__3K3m9"};
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -65,23 +62,25 @@ function _createForOfIteratorHelperLoose(o, allowArrayLike) {
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
+var styles = {"test":"_styles-module__test__3ybTi","error":"_styles-module__error__3fyPz","inline":"_styles-module__inline__3F-ST","options":"_styles-module__options__1p3r7","inlineOpt":"_styles-module__inlineOpt__339hQ","columnOpt":"_styles-module__columnOpt__PfI8c","opt":"_styles-module__opt__3K3m9"};
+
 var CustomCheckBox = function CustomCheckBox(props) {
   var _useField = formik.useField(props),
     field = _useField[0];
-  return /*#__PURE__*/React__default.createElement("label", {
+  return /*#__PURE__*/React.createElement("label", {
     className: "label_check " + props.classes
-  }, /*#__PURE__*/React__default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: styles.inline
-  }, /*#__PURE__*/React__default.createElement("input", _extends({
+  }, /*#__PURE__*/React.createElement("input", _extends({
     type: "checkbox"
   }, field, props, {
     id: props.name
-  })), /*#__PURE__*/React__default.createElement("label", {
+  })), /*#__PURE__*/React.createElement("label", {
     htmlFor: props.name,
     style: {
       marginLeft: '10px'
     }
-  }, props.label)), /*#__PURE__*/React__default.createElement(formik.ErrorMessage, {
+  }, props.label)), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -92,7 +91,7 @@ var CustomHeader = function CustomHeader(props) {
   var localStyle = {
     marginBottom: 0
   };
-  return /*#__PURE__*/React__default.createElement("h3", {
+  return /*#__PURE__*/React.createElement("h3", {
     style: localStyle,
     className: "section-header " + props.classes
   }, props.text);
@@ -105,25 +104,25 @@ var CustomRadioGroup = function CustomRadioGroup(_ref) {
     props = _objectWithoutPropertiesLoose(_ref, _excluded);
   var _useField = formik.useField(props),
     field = _useField[0];
-  return /*#__PURE__*/React__default.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "radio-group " + props.classes
-  }, /*#__PURE__*/React__default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: props.inline && props.inline === 'true' ? styles.inline : ''
-  }, /*#__PURE__*/React__default.createElement("label", null, label), /*#__PURE__*/React__default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("label", null, label), /*#__PURE__*/React.createElement("div", {
     className: styles.options + " " + (props.inlineopts === 'true' ? styles.inlineOpt : styles.columnOpt)
   }, options.map(function (opt, index) {
-    return /*#__PURE__*/React__default.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "" + styles.opt,
       key: opt.value
-    }, /*#__PURE__*/React__default.createElement("input", _extends({}, field, props, {
+    }, /*#__PURE__*/React.createElement("input", _extends({}, field, props, {
       type: "radio",
       value: opt.value,
       checked: opt.value === field.value,
       id: "opt_" + opt.value + "_" + index
-    })), /*#__PURE__*/React__default.createElement("label", {
+    })), /*#__PURE__*/React.createElement("label", {
       htmlFor: "opt_" + opt.value + "_" + index
     }, opt.desc));
-  }))), /*#__PURE__*/React__default.createElement(formik.ErrorMessage, {
+  }))), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -137,24 +136,24 @@ var CustomSelect = function CustomSelect(_ref) {
     props = _objectWithoutPropertiesLoose(_ref, _excluded$1);
   var _useField = formik.useField(props),
     field = _useField[0];
-  return /*#__PURE__*/React__default.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "select " + props.classes
-  }, /*#__PURE__*/React__default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: props.inline && props.inline === 'true' ? styles.inline : ''
-  }, /*#__PURE__*/React__default.createElement("label", {
+  }, /*#__PURE__*/React.createElement("label", {
     htmlFor: props.name || props.id
-  }, " ", label, " "), /*#__PURE__*/React__default.createElement("select", _extends({}, field, props, {
+  }, " ", label, " "), /*#__PURE__*/React.createElement("select", _extends({}, field, props, {
     id: props.name
-  }), /*#__PURE__*/React__default.createElement("option", {
+  }), /*#__PURE__*/React.createElement("option", {
     value: ""
   }, "--- Select an option ---"), options.map(function (_ref2, index) {
     var desc = _ref2.desc,
       value = _ref2.value;
-    return /*#__PURE__*/React__default.createElement("option", {
+    return /*#__PURE__*/React.createElement("option", {
       value: value,
       key: "select_option_" + index
     }, desc);
-  }))), /*#__PURE__*/React__default.createElement(formik.ErrorMessage, {
+  }))), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error"
@@ -164,15 +163,15 @@ var CustomSelect = function CustomSelect(_ref) {
 var CustomTextInput = function CustomTextInput(props) {
   var _useField = formik.useField(props),
     field = _useField[0];
-  return /*#__PURE__*/React__default.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "input-box " + props.classes
-  }, /*#__PURE__*/React__default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: props.inline && props.inline === 'true' ? styles.inline : ''
-  }, props.label && /*#__PURE__*/React__default.createElement("label", {
+  }, props.label && /*#__PURE__*/React.createElement("label", {
     htmlFor: props.name
-  }, props.label), /*#__PURE__*/React__default.createElement("input", _extends({}, field, props, {
+  }, props.label), /*#__PURE__*/React.createElement("input", _extends({}, field, props, {
     id: props.name
-  }))), /*#__PURE__*/React__default.createElement(formik.ErrorMessage, {
+  }))), /*#__PURE__*/React.createElement(formik.ErrorMessage, {
     name: props.name,
     component: "span",
     className: "error " + styles.error
@@ -334,7 +333,7 @@ var DynamicForm = function DynamicForm(_ref) {
   var _getInputs = getInputs(inputs),
     initialValues = _getInputs.initialValues,
     validationSchema = _getInputs.validationSchema;
-  return /*#__PURE__*/React__default.createElement(formik.Formik, {
+  return /*#__PURE__*/React.createElement(formik.Formik, {
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: function onSubmit(values, helpers) {
@@ -342,7 +341,7 @@ var DynamicForm = function DynamicForm(_ref) {
       if (resetOnSubmit) helpers.resetForm();
     }
   }, function () {
-    return /*#__PURE__*/React__default.createElement(formik.Form, {
+    return /*#__PURE__*/React.createElement(formik.Form, {
       noValidate: true
     }, formInputs.map(function (_ref2) {
       var name = _ref2.name,
@@ -350,13 +349,13 @@ var DynamicForm = function DynamicForm(_ref) {
         props = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
       switch (type) {
         case 'header':
-          return /*#__PURE__*/React__default.createElement(CustomHeader, {
+          return /*#__PURE__*/React.createElement(CustomHeader, {
             text: props.text,
             key: "header_" + props.text.replace(' ', '_').toString().toLowerCase(),
             classes: props["class"]
           });
         case 'select':
-          return /*#__PURE__*/React__default.createElement(CustomSelect, {
+          return /*#__PURE__*/React.createElement(CustomSelect, {
             key: name,
             label: props === null || props === void 0 ? void 0 : props.label,
             name: name,
@@ -365,7 +364,7 @@ var DynamicForm = function DynamicForm(_ref) {
             inline: props === null || props === void 0 ? void 0 : props.inline
           });
         case 'radio-group':
-          return /*#__PURE__*/React__default.createElement(CustomRadioGroup, {
+          return /*#__PURE__*/React.createElement(CustomRadioGroup, {
             label: props === null || props === void 0 ? void 0 : props.label,
             name: name,
             options: props === null || props === void 0 ? void 0 : props.options,
@@ -375,14 +374,14 @@ var DynamicForm = function DynamicForm(_ref) {
             inlineopts: props === null || props === void 0 ? void 0 : props.inlineOpts
           });
         case 'checkbox':
-          return /*#__PURE__*/React__default.createElement(CustomCheckBox, {
+          return /*#__PURE__*/React.createElement(CustomCheckBox, {
             label: props === null || props === void 0 ? void 0 : props.label,
             key: name,
             name: name,
             classes: props["class"]
           });
         default:
-          return /*#__PURE__*/React__default.createElement(CustomTextInput, {
+          return /*#__PURE__*/React.createElement(CustomTextInput, {
             key: name,
             name: name,
             placeholder: props === null || props === void 0 ? void 0 : props.placeholder,
@@ -396,13 +395,82 @@ var DynamicForm = function DynamicForm(_ref) {
   });
 };
 
-var ExampleComponent = function ExampleComponent(_ref) {
-  var text = _ref.text;
-  return React.createElement("div", {
-    className: styles.test
-  }, "Example Component: ", text);
+var Form = function Form(props) {
+  return React.createElement(React.Fragment, null, React.createElement("form", {
+    onSubmit: function onSubmit() {
+      return props.onSubmit(['ds']);
+    }
+  }, React.createElement("input", {
+    type: 'text',
+    name: 'lol',
+    title: 'lol'
+  })));
 };
 
+var Button = function Button() {
+  return React.createElement("div", null, "Button");
+};
+
+var CheckBox = function CheckBox() {
+  return React.createElement("div", null, "CheckBox");
+};
+
+var FilePicker = function FilePicker() {
+  return React.createElement("div", null, "FilePicker");
+};
+
+var Header = function Header() {
+  return React.createElement("div", null, "Header");
+};
+
+var RadioGroup = function RadioGroup() {
+  return React.createElement("div", null, "RadioGroup");
+};
+
+var Select = function Select() {
+  return React.createElement("div", null, "Select");
+};
+
+var TextArea = function TextArea() {
+  return React.createElement("div", null, "TextArea");
+};
+
+var TextField = function TextField() {
+  return React.createElement("div", null, "TextField");
+};
+
+var createButton = function createButton() {};
+
+var createCheckBox = function createCheckBox() {};
+
+var createFilePicker = function createFilePicker() {};
+
+var createForm = function createForm() {};
+
+var createHeader = function createHeader() {};
+
+var createRadioGroup = function createRadioGroup() {};
+
+var createSelect = function createSelect() {};
+
+var createTextArea = function createTextArea() {};
+
+exports.Button = Button;
+exports.CheckBox = CheckBox;
 exports.DynamicForm = DynamicForm;
-exports.ExampleComponent = ExampleComponent;
+exports.FilePicker = FilePicker;
+exports.Form = Form;
+exports.Header = Header;
+exports.RadioGroup = RadioGroup;
+exports.Select = Select;
+exports.TextArea = TextArea;
+exports.TextField = TextField;
+exports.createButton = createButton;
+exports.createCheckBox = createCheckBox;
+exports.createFilePicker = createFilePicker;
+exports.createForm = createForm;
+exports.createHeader = createHeader;
+exports.createRadioGroup = createRadioGroup;
+exports.createSelect = createSelect;
+exports.createTextArea = createTextArea;
 //# sourceMappingURL=index.js.map

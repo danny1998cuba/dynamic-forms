@@ -1,6 +1,5 @@
-import { DynamicForm } from './v1'
+import { Form } from './Form'
 import {
-  Form,
   Button,
   CheckBox,
   FilePicker,
@@ -8,7 +7,9 @@ import {
   RadioGroup,
   Select,
   TextArea,
-  TextField,
+  TextField
+} from './components'
+import {
   createButton,
   createCheckBox,
   createFilePicker,
@@ -17,10 +18,17 @@ import {
   createRadioGroup,
   createSelect,
   createTextArea
-} from './v2'
+} from './generators'
 
 export {
-  DynamicForm,
+  createButton,
+  createCheckBox,
+  createFilePicker,
+  createForm,
+  createHeader,
+  createRadioGroup,
+  createSelect,
+  createTextArea,
   Form,
   Button,
   CheckBox,
@@ -29,13 +37,5 @@ export {
   RadioGroup,
   Select,
   TextArea,
-  TextField,
-  createButton,
-  createCheckBox,
-  createFilePicker,
-  createForm,
-  createHeader,
-  createRadioGroup,
-  createSelect,
-  createTextArea
+  TextField
 }
