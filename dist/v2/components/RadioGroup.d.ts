@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const RadioGroup: () => React.JSX.Element;
+import { RadioGroupProps } from '../types/ComponentsProps';
+export declare const RadioGroup: (props: RadioGroupProps) => React.JSX.Element;

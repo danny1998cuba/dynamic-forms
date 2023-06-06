@@ -12,11 +12,11 @@ import {
   createButton,
   createCheckBox,
   createFilePicker,
-  createForm,
   createHeader,
   createRadioGroup,
   createSelect,
-  createTextArea
+  createTextArea,
+  createTextField
 } from './v2'
 
 export {
@@ -33,9 +33,9 @@ export {
   createButton,
   createCheckBox,
   createFilePicker,
-  createForm,
   createHeader,
   createRadioGroup,
   createSelect,
-  createTextArea
+  createTextArea,
+  createTextField
 }

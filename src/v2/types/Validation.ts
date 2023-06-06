@@ -20,5 +20,5 @@ export interface ValidationRule {
     | 'length'
     | 'regex'
   message: string
-  value?: number | RegExp | boolean
+  value?: number | RegExp | boolean | Date | string
 }

@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const Button: () => React.JSX.Element;
+import { ButtonProps } from '../types/ComponentsProps';
+export declare const Button: (props: ButtonProps) => React.JSX.Element;

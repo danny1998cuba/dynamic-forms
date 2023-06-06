@@ -1,5 +1,8 @@
-import React from 'react';
-export interface FormProps {
-    onSubmit: (values: any[]) => void;
+import React, { PropsWithChildren } from 'react';
+import { ComponentProps } from './types';
+export declare class FormProps {
+    elements: [ComponentProps];
+    onSubmit: (values: {}) => void;
+    resetOnSubmit: boolean;
 }
-export declare const Form: (props: FormProps) => React.JSX.Element;
+export declare const Form: (props: PropsWithChildren<FormProps>) => React.JSX.Element;

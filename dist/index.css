@@ -1,6 +1,6 @@
 /* add css module styles here (optional) */
 
-._styles-module__test__3ybTi {
+._3ybTi {
   margin: 2em;
   padding: 0.5em;
   border: 2px solid #000;
@@ -8,41 +8,41 @@
   text-align: center;
 }
 
-._styles-module__error__3fyPz {
+._3fyPz {
   color: #ff0044;
   margin-top: 0;
 }
 
-._styles-module__inline__3F-ST {
+._3F-ST {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-._styles-module__inline__3F-ST label {
+._3F-ST label {
   width: 100%;
 }
 
-._styles-module__options__1p3r7 {
+._1p3r7 {
   display: flex;
   margin-left: 1rem;
 }
 
-._styles-module__options__1p3r7._styles-module__inlineOpt__339hQ {
+._1p3r7._339hQ {
   flex-direction: row;
 }
 
-._styles-module__options__1p3r7._styles-module__columnOpt__PfI8c {
+._1p3r7._PfI8c {
   flex-direction: column;
 }
 
-._styles-module__options__1p3r7 ._styles-module__opt__3K3m9 {
+._1p3r7 ._3K3m9 {
   display: flex;
   align-items: center;
   margin-right: 10px;
   gap: 3px;
 }
 
-._styles-module__options__1p3r7 ._styles-module__opt__3K3m9:nth-last-child() {
+._1p3r7 ._3K3m9:nth-last-child() {
   margin-right: 0;
 }

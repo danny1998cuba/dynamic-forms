@@ -1,3 +1,3 @@
-import { BasicComponentProps } from './BasicComponentProps';
+import { BasicComponentProps, ComponentProps } from './ComponentsProps';
 import { ValidationRule } from './Validation';
-export { BasicComponentProps, ValidationRule };
+export { BasicComponentProps, ComponentProps, ValidationRule };

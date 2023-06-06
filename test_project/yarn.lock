@@ -3177,9 +3177,13 @@ cssstyle@^2.3.0:
   dependencies:
     cssom "~0.3.6"
 
-"d98c_dynamic-forms@link:..":
-  version "0.0.0"
-  uid ""
+d98c_dynamic-forms@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/d98c_dynamic-forms/-/d98c_dynamic-forms-1.0.2.tgz#bb416c9650c60d89b28f090367856671860e30d1"
+  integrity sha512-lfJitxPEzVWDitPjNhUF74JZAh/VLvRg8dqIB1eQ6XADXn6YfFWv1rcR6wFG6wknd3k+O4S9z10t17yMIUHRyQ==
+  dependencies:
+    formik "^2.4.1"
+    yup "^1.2.0"
 
 damerau-levenshtein@^1.0.7:
   version "1.0.8"
@@ -4146,10 +4150,10 @@ form-data@^3.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-formik@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-2.4.0.tgz#8243e42a89e1c9fbe9aefbd48bc8d1f10ae2950d"
-  integrity sha512-QZiWztt9fD84EYcF7Bmr431ZhIm1xUVgBACbTuJ6azPrUpVp7o6q+t9HJaIQsFZrMfcBPNBotYtDgyDpzQ3z0Q==
+formik@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.4.1.tgz#f2630b51a866c86144a5faf68d31200c9d8ceea9"
+  integrity sha512-ajOB9EmFhXb4PACTlaooVEn7PLtLtBJEZ8fPs+wFZjL5KSGwgAoU+n9DHN8JcqNKcXkloEYYtn1lxrLav18ecQ==
   dependencies:
     deepmerge "^2.1.1"
     hoist-non-react-statics "^3.3.0"

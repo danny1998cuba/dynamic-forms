@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const Select: () => React.JSX.Element;
+import { SelectProps } from '../types/ComponentsProps';
+export declare const Select: (props: SelectProps) => React.JSX.Element;

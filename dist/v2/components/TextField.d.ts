@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const TextField: () => React.JSX.Element;
+import { TextFieldProps } from '../types/ComponentsProps';
+export declare const TextField: (props: TextFieldProps) => React.JSX.Element;

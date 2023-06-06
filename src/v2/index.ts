@@ -13,22 +13,22 @@ import {
   createButton,
   createCheckBox,
   createFilePicker,
-  createForm,
   createHeader,
   createRadioGroup,
   createSelect,
-  createTextArea
+  createTextArea,
+  createTextField
 } from './generators'
 
 export {
   createButton,
   createCheckBox,
   createFilePicker,
-  createForm,
   createHeader,
   createRadioGroup,
   createSelect,
   createTextArea,
+  createTextField,
   Form,
   Button,
   CheckBox,

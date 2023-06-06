@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const TextArea: () => React.JSX.Element;
+import { TextAreaProps } from '../types/ComponentsProps';
+export declare const TextArea: (props: TextAreaProps) => React.JSX.Element;

@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const CheckBox: () => React.JSX.Element;
+import { CheckBoxProps } from '../types/ComponentsProps';
+export declare const CheckBox: (props: CheckBoxProps) => React.JSX.Element;

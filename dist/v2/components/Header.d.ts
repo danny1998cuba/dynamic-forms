@@ -1,2 +1,3 @@
 import React from 'react';
-export declare const Header: () => React.JSX.Element;
+import { HeaderProps } from '../types/ComponentsProps';
+export declare const Header: (props: HeaderProps) => React.JSX.Element;
