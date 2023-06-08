@@ -1,5 +1,6 @@
-import { ButtonProps, CheckBoxProps, ComponentProps, FilePickerProps, HeaderProps, RadioGroupProps, SelectProps, TextAreaProps, TextFieldProps } from '../types/ComponentsProps';
+import { ActionButtonProps, ButtonProps, CheckBoxProps, ComponentProps, FilePickerProps, HeaderProps, RadioGroupProps, SelectProps, TextAreaProps, TextFieldProps } from '../types/ComponentsProps';
 declare const createButton: (props: ButtonProps) => ComponentProps;
+declare const createActionButton: (props: ActionButtonProps) => ComponentProps;
 declare const createCheckBox: (props: CheckBoxProps) => ComponentProps;
 declare const createFilePicker: (props: FilePickerProps) => ComponentProps;
 declare const createHeader: (props: HeaderProps) => ComponentProps;
@@ -7,4 +8,4 @@ declare const createRadioGroup: (props: RadioGroupProps) => ComponentProps;
 declare const createSelect: (props: SelectProps) => ComponentProps;
 declare const createTextArea: (props: TextAreaProps) => ComponentProps;
 declare const createTextField: (props: TextFieldProps) => ComponentProps;
-export { createButton, createCheckBox, createFilePicker, createHeader, createRadioGroup, createSelect, createTextArea, createTextField };
+export { createActionButton, createButton, createCheckBox, createFilePicker, createHeader, createRadioGroup, createSelect, createTextArea, createTextField };

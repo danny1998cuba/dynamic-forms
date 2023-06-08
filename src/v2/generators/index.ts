@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {
+  ActionButtonProps,
   ButtonProps,
   CheckBoxProps,
   ComponentProps,
@@ -12,6 +13,12 @@ import {
 } from '../types/ComponentsProps'
 
 const createButton = (props: ButtonProps): ComponentProps => {
+  return {
+    ...props
+  }
+}
+
+const createActionButton = (props: ActionButtonProps): ComponentProps => {
   return {
     ...props
   }
@@ -63,6 +70,7 @@ const createTextField = (props: TextFieldProps): ComponentProps => {
 }
 
 export {
+  createActionButton,
   createButton,
   createCheckBox,
   createFilePicker,

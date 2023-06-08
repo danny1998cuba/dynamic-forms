@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { ValidationRule } from './Validation';
 export interface ComponentProps {
 }
@@ -12,10 +13,14 @@ export interface BasicComponentProps extends ComponentProps {
 export interface ButtonProps extends ComponentProps {
     className: string;
     text: string;
-    type: 'button' | 'submit' | 'reset';
+    type: 'submit' | 'reset';
+}
+export interface ActionButtonProps extends ComponentProps {
+    className: string;
+    text: string;
+    onClick: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }
 export interface CheckBoxProps extends BasicComponentProps {
-    checked: boolean;
     inputClass?: string;
     labelClass?: string;
 }

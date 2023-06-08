@@ -1,3 +1,4 @@
+import { ActionButton } from './ActionButton'
 import { Button } from './Button'
 import { CheckBox } from './CheckBox'
 import { FilePicker } from './FilePicker'
@@ -8,6 +9,7 @@ import { TextArea } from './TextArea'
 import { TextField } from './TextField'
 
 export {
+  ActionButton,
   Button,
   CheckBox,
   FilePicker,

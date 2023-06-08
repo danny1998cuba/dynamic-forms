@@ -1,6 +1,6 @@
 {
   "name": "d98c_dynamic-forms",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React Dynamic Form with Formik and Yup validations",
   "author": "danny1998cuba",
   "license": "MIT",
@@ -62,7 +62,6 @@
     "dist"
   ],
   "dependencies": {
-    "@types/yup": "^0.32.0",
     "formik": "^2.4.1",
     "yup": "^1.2.0"
   }

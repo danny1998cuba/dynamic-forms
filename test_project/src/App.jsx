@@ -40,6 +40,13 @@ function App() {
         }
       ]
     }),
+    other: Dynamic.createActionButton({
+      className: 'btn',
+      text: 'Action',
+      onClick: (e) => {
+        console.log('His')
+      }
+    }),
     submit: Dynamic.createButton({
       className: 'btn',
       text: 'Submit',
@@ -58,7 +65,7 @@ function App() {
         /> */}
         <Dynamic.Form
           onSubmit={(values) => console.log(values)}
-          resetOnSubmit={false}
+          resetOnSubmit={true}
           elements={Object.values(form)}
         >
           <>
@@ -67,6 +74,7 @@ function App() {
             <div style={{ backgroundColor: '#ad57e1', padding: '1rem 2rem' }}>
               <Dynamic.CheckBox {...form.check} />
             </div>
+            <Dynamic.ActionButton {...form.other}></Dynamic.ActionButton>
             <Dynamic.Button {...form.submit}></Dynamic.Button>
           </>
         </Dynamic.Form>

@@ -557,6 +557,16 @@ var Form = function Form(props) {
   }, props.children));
 };
 
+var ActionButton = function ActionButton(props) {
+  return React.createElement("input", {
+    type: 'button',
+    title: props.text,
+    value: props.text,
+    className: "d98c-btn " + props.className,
+    onClick: props.onClick
+  });
+};
+
 var Button = function Button(props) {
   return React.createElement("input", {
     type: props.type,
@@ -711,6 +721,9 @@ var TextField = function TextField(props) {
 var createButton = function createButton(props) {
   return _extends({}, props);
 };
+var createActionButton = function createActionButton(props) {
+  return _extends({}, props);
+};
 var createCheckBox = function createCheckBox(props) {
   return _extends({}, props);
 };
@@ -736,6 +749,7 @@ var createTextField = function createTextField(props) {
   return _extends({}, props);
 };
 
+exports.ActionButton = ActionButton;
 exports.Button = Button;
 exports.CheckBox = CheckBox;
 exports.DynamicForm = DynamicForm;
@@ -746,6 +760,7 @@ exports.RadioGroup = RadioGroup;
 exports.Select = Select;
 exports.TextArea = TextArea;
 exports.TextField = TextField;
+exports.createActionButton = createActionButton;
 exports.createButton = createButton;
 exports.createCheckBox = createCheckBox;
 exports.createFilePicker = createFilePicker;

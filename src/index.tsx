@@ -1,6 +1,7 @@
 import { DynamicForm } from './v1'
 import {
   Form,
+  ActionButton,
   Button,
   CheckBox,
   FilePicker,
@@ -9,6 +10,7 @@ import {
   Select,
   TextArea,
   TextField,
+  createActionButton,
   createButton,
   createCheckBox,
   createFilePicker,
@@ -22,6 +24,7 @@ import {
 export {
   DynamicForm,
   Form,
+  ActionButton,
   Button,
   CheckBox,
   FilePicker,
@@ -30,6 +33,7 @@ export {
   Select,
   TextArea,
   TextField,
+  createActionButton,
   createButton,
   createCheckBox,
   createFilePicker,
